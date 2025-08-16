@@ -1,0 +1,82 @@
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Soundpad</title>
+    <style> .hidden { display: none; } .active { display: block; } </style>
+</head>
+<body>
+    <div id="Title" class="title">
+        Soundpad
+    </div>
+    
+    <div id="MainScreen" class="active">
+        <div class="background">
+            <div class="buttons" id="buttons">
+                <button class="new-button" id="new-button" onclick="open_new_button_modal()"> + </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <div class="context-menu" id="contextMenu">
+        <div class="context-menu-item" onclick="open_rename_modal()">Renomear</div>
+        <div class="context-menu-item" onclick="open_new_sound_modal()">Mudar som</div>
+        <div class="context-menu-item" onclick="delete_button()">Deletar botão</div>
+    </div>
+
+    <div class="modal-backdrop" id="renameModal">
+        <div class="modal">
+            <div class="modal-content">
+                <h2>Alterar nome</h2>
+                <input type="text" id="newNameInput" placeholder="Insira o novo nome aqui">
+                <div class="modal-actions">
+                    <button class="modal-buttons modal-save" id="saveNewName" onclick="rename_button()">Salvar</button>
+                    <button class="modal-buttons modal-cancel" id="cancelNewName" onclick="close_rename_modal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="newButtonModal">
+        <div class="modal">
+            <div class="modal-content">
+                <h2>Adicionar novo botão</h2>
+                <input type="text" id="newButtonNameInput" placeholder="Nome do novo botão" autocomplete="off">
+                <input type="file" id="newButtonFileInput" accept=".mp3">
+                <div class="modal-actions">
+                    <button class="modal-buttons modal-save" id="createNewButton" onclick="create_new_button()">Criar</button>
+                    <button class="modal-buttons modal-cancel" id="cancelNewButton" onclick="close_new_button_modal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="newSoundModal">
+        <div class="modal">
+            <div class="modal-content">
+                <h2>Alterar Som</h2>
+                <input type="text" id="oldSoundFileShow" placeholder="Nome do som a ser trocado." style="pointer-events: none;">
+                <input type="file" id="newSoundFileInput" accept=".mp3">
+                <div class="modal-actions">
+                    <button class="modal-buttons modal-save" id="saveSoundChanges" onclick="change_sound()">Confirmar</button>
+                    <button class="modal-buttons modal-cancel" id="cancelSoundChanges" onclick="close_new_sound_modal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="media-container">
+        <button class="media-buttons hidden" id="stopButton" onclick="eel.pause_sound()"><img src="/stop-circle.svg" width="50px" alt="Parar"></button>
+    </div>
+
+    <div class="credits">Made by: João Vitor C. Salazar</div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
+</body>
+</html>
