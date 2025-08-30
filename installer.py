@@ -25,7 +25,7 @@ class Installer:
 
         self.configs_path.mkdir(parents=True, exist_ok=True)
 
-        config_file_path: Path = internal_path / "config.json"
+        config_file_path: Path = internal_path / "configs" / "config.json"
         print(config_file_path)
         if not os.path.exists(self.configs_path / "config.json"):
             shutil.copy(config_file_path, self.configs_path / "config.json")

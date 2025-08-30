@@ -95,6 +95,11 @@ def change_button_sound(old_file_name: str, new_file_name: str, file_bytes: list
     if not result['success']:
         return result
 
+    result: dict = sounds_handler.delete_sound(file_name=old_file_name)
+
+    if not result['success']:
+        return result
+
     return config_handler.update_button_file(old_file_name=old_file_name, new_file_name=new_file_name)
 
 
